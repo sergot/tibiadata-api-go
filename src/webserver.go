@@ -233,6 +233,9 @@ func runWebServer() {
 // @Produce      json
 // @Param        name path string true "The character name" extensions(x-example=Trollefar)
 // @Success      200  {object}  CharacterResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/character/{name} [get]
 func tibiaCharactersCharacterV3(c *gin.Context) {
 	// Getting params from URL
@@ -268,6 +271,9 @@ func tibiaCharactersCharacterV3(c *gin.Context) {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  CreaturesOverviewResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/creatures [get]
 func tibiaCreaturesOverviewV3(c *gin.Context) {
 	tibiadataRequest := TibiaDataRequestStruct{
@@ -292,6 +298,9 @@ func tibiaCreaturesOverviewV3(c *gin.Context) {
 // @Produce      json
 // @Param        race path string true "The race of creature" extensions(x-example=nightmare)
 // @Success      200  {object}  CreatureResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/creature/{race} [get]
 func tibiaCreaturesCreatureV3(c *gin.Context) {
 	// getting params from URL
@@ -325,6 +334,9 @@ func tibiaCreaturesCreatureV3(c *gin.Context) {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  FansitesResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/fansites [get]
 func tibiaFansitesV3(c *gin.Context) {
 	tibiadataRequest := TibiaDataRequestStruct{
@@ -349,6 +361,9 @@ func tibiaFansitesV3(c *gin.Context) {
 // @Produce      json
 // @Param        name path string true "The name of guild" extensions(x-example=Elysium)
 // @Success      200  {object}  GuildResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/guild/{name} [get]
 func tibiaGuildsGuildV3(c *gin.Context) {
 	// getting params from URL
@@ -383,6 +398,9 @@ func tibiaGuildsGuildV3(c *gin.Context) {
 // @Produce      json
 // @Param        world path string true "The world" extensions(x-example=Antica)
 // @Success      200  {object}  GuildsOverviewResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/guilds/{world} [get]
 func tibiaGuildsOverviewV3(c *gin.Context) {
 	// getting params from URL
@@ -427,6 +445,9 @@ func tibiaGuildsOverviewV3(c *gin.Context) {
 // @Param        category path string true "The category" default(experience) Enums(achievements, axefighting, charmpoints, clubfighting, distancefighting, experience, fishing, fistfighting, goshnarstaint, loyaltypoints, magiclevel, shielding, swordfighting, dromescore) extensions(x-example=fishing)
 // @Param        vocation path string true "The vocation" default(all) Enums(all, knights, paladins, sorcerers, druids) extensions(x-example=knights)
 // @Success      200  {object}  HighscoresResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/highscores/{world}/{category}/{vocation} [get]
 func tibiaHighscoresV3(c *gin.Context) {
 	// getting params from URL
@@ -498,6 +519,9 @@ func tibiaHighscoresV3(c *gin.Context) {
 // @Param        world     path string true "The world to show" extensions(x-example=Antica)
 // @Param        house_id  path int    true "The ID of the house" extensions(x-example=35019)
 // @Success      200  {object}  HouseResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/house/{world}/{house_id} [get]
 func tibiaHousesHouseV3(c *gin.Context) {
 	// getting params from URL
@@ -560,6 +584,9 @@ func tibiaHousesHouseV3(c *gin.Context) {
 // @Param        world path string true "The world to show" extensions(x-example=Antica)
 // @Param        town  path string true "The town to show" extensions(x-example=Venore)
 // @Success      200  {object}  HousesOverviewResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/houses/{world}/{town} [get]
 //TODO: This API needs to be refactored somehow to use tibiaDataRequestHandler
 func tibiaHousesOverviewV3(c *gin.Context) {
@@ -613,6 +640,9 @@ func tibiaHousesOverviewV3(c *gin.Context) {
 // @Produce      json
 // @Param        world path string true "The world to show" extensions(x-example=Antica)
 // @Success      200  {object}  KillStatisticsResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/killstatistics/{world} [get]
 func tibiaKillstatisticsV3(c *gin.Context) {
 	// getting params from URL
@@ -654,6 +684,9 @@ func tibiaKillstatisticsV3(c *gin.Context) {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  NewsListResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/news/archive [get]
 func tibiaNewslistArchiveV3() bool {
 	// Not used function.. but required for documentation purpose
@@ -668,6 +701,9 @@ func tibiaNewslistArchiveV3() bool {
 // @Produce      json
 // @Param        days path int true "The number of days to show" default(90) minimum(1) extensions(x-example=30)
 // @Success      200  {object}  NewsListResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/news/archive/{days} [get]
 func tibiaNewslistArchiveDaysV3() bool {
 	// Not used function.. but required for documentation purpose
@@ -681,6 +717,9 @@ func tibiaNewslistArchiveDaysV3() bool {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  NewsListResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/news/latest [get]
 func tibiaNewslistLatestV3() bool {
 	// Not used function.. but required for documentation purpose
@@ -694,6 +733,9 @@ func tibiaNewslistLatestV3() bool {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  NewsListResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/news/newsticker [get]
 func tibiaNewslistV3(c *gin.Context) {
 	// getting params from URL
@@ -771,6 +813,9 @@ func tibiaNewslistV3(c *gin.Context) {
 // @Produce      json
 // @Param        news_id path int true "The ID of news entry" extensions(x-example=6512)
 // @Success      200  {object}  NewsResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/news/id/{news_id} [get]
 func tibiaNewsV3(c *gin.Context) {
 	// getting params from URL
@@ -811,6 +856,9 @@ func tibiaNewsV3(c *gin.Context) {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  SpellsOverviewResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/spells [get]
 func tibiaSpellsOverviewV3(c *gin.Context) {
 	// getting params from URL
@@ -858,6 +906,9 @@ func tibiaSpellsOverviewV3(c *gin.Context) {
 // @Produce      json
 // @Param        spell_id path string true "The name of spell" extensions(x-example=stronghaste)
 // @Success      200  {object}  SpellInformationResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/spell/{spell_id} [get]
 func tibiaSpellsSpellV3(c *gin.Context) {
 	// getting params from URL
@@ -890,6 +941,9 @@ func tibiaSpellsSpellV3(c *gin.Context) {
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  WorldsOverviewResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/worlds [get]
 func tibiaWorldsOverviewV3(c *gin.Context) {
 	tibiadataRequest := TibiaDataRequestStruct{
@@ -914,6 +968,9 @@ func tibiaWorldsOverviewV3(c *gin.Context) {
 // @Produce      json
 // @Param        name path string true "The name of world" extensions(x-example=Antica)
 // @Success      200  {object}  WorldResponse
+// @Failure      400  {object}  Information
+// @Failure      404  {object}  Information
+// @Failure      503  {object}  Information
 // @Router       /v3/world/{name} [get]
 func tibiaWorldsWorldV3(c *gin.Context) {
 	// getting params from URL
